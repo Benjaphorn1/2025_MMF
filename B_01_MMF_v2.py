@@ -1,4 +1,7 @@
 import pandas
+import random
+
+
 
  # Functions go here
 def make_statement(statement, decoration):
@@ -151,7 +154,7 @@ while tickets_sold < MAX_TICKETS:
         ticket_price = CHILD_PRICE
 
     # Adult ticket price is $10.50
-    elif  age < 64:
+    elif  age < 65:
         ticket_price = ADULT_PRICE
 
     # Senior ticket price is $7.50
@@ -204,6 +207,20 @@ print(mini_movie_frame.to_string(index=False))
 print()
 print(f"Total Paid: ${total_paid:.2f}")
 print(f"Total profit ${total_profit:.2f}")
+print()
+
+# Choose random winner
+winner = random.choice(all_names)
+
+#Find index of winner (ie: position in list)
+winner_index = all_names.index(winner)
+print("winner", winner, "list position", winner_index)
+
+# retrieve total won
+total_won = mini_movie_frame.at[winner_index, 'Total']
+
+#winner announcement
+print(f"The winner is {winner}, Their ticket worth is ${total_won} is free")
 
 if tickets_sold == MAX_TICKETS:
     print(f"You have sold all the tickets (ie: {MAX_TICKETS} tickets)")
